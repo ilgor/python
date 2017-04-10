@@ -1,2 +1,5 @@
 #IDE metadata
 **.idea/**
+
+.idea/*.xml
+.idea/*.iml
