@@ -1,6 +1,6 @@
 import unittest
 import inspect
-from .DoublyLinkedList import LinkedList
+from DoublyLinkedList  import LinkedList
 
 
 class DoublyLinkedListTest(unittest.TestCase):

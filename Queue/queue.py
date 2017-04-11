@@ -27,7 +27,4 @@ class Queue():
         if self.head == len(self.arr):
             self.head = 0
         self.count -= 1
-        print item
-
-    def show(self):
-        print(self.arr)
+        return item
