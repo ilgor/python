@@ -52,5 +52,5 @@ class DoublyLinkedListTest(unittest.TestCase):
     def test_reverse(self):
         self.linkedList.reverse()
         self.size()
-        self.assertEqual(self.linkedList.head.next, 1)
-        self.assertEqual(self.linkedList.head.prev, 4)
+        self.assertEqual(self.linkedList.head.next.data, 1)
+        self.assertEqual(self.linkedList.head.prev.data, 4)
