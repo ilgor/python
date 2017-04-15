@@ -42,4 +42,3 @@ class LinkedList():
             current = nextNode
         self.head.prev = self.head.next
         self.head.next = prevNode
-

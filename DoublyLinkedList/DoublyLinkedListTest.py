@@ -4,7 +4,6 @@ from DoublyLinkedList import LinkedList
 
 
 class DoublyLinkedListTest(unittest.TestCase):
-
     def setUp(self):
         self.linkedList = LinkedList()
         arr = [1, 2, 3, 4]
