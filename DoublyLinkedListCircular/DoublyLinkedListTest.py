@@ -2,7 +2,6 @@ import unittest
 import inspect
 from DoublyLinkedList  import LinkedList
 
-
 class DoublyLinkedListTest(unittest.TestCase):
 
     def setUp(self):

@@ -1,6 +1,6 @@
 import unittest
 import inspect
-from Queue import Queue
+from queue import Queue
 
 class QueueTest(unittest.TestCase):
 
@@ -32,3 +32,7 @@ class QueueTest(unittest.TestCase):
     def test_deque_empty_queue(self):
         with self.assertRaises(Exception):
             self.queue.dequeue()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 064c32596d7fc1b1cdbe83569a180727f04fcb75
