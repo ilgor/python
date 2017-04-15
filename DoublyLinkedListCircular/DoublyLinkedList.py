@@ -32,10 +32,13 @@ class LinkedList():
             current = current.next
 
     def reverse(self):
-        current = self.head
+        current = self.head.next
         prevNode = current.prev
-        nextNode = current.next
-        while current.next != self.head:
+        while current != self.head:
+            nextNode = current.next
             current.next = prevNode
             current.prev = nextNode
-            current = nextNode.next
+            prevNode = current
+            current = nextNode
+        self.head.prev = self.head.next
+        self.head.next = prevNode
