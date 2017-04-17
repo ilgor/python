@@ -3,7 +3,7 @@ from List import List
 
 class HashTable():
     def __init__(self, table_size):
-        self.slots = [None] * table_size
+        self.slots = [ List() for _ in range(table_size)]
         self.table_size = table_size
 
     def hash(self, key):
@@ -16,11 +16,7 @@ class HashTable():
         hash_value = self.hash(key)
 
         slot = self.slots[hash_value]
-        if slot == None:
-            slots_list = List()
-            slots_list.add(key, value)
-            self.slots[hash_value] = slots_list
-        elif slot.find(key) == None:
+        if slot.find(key) == None:
             slot.add(key, value)
 
     def remove(self, key):
