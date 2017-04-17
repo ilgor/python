@@ -1,6 +1,5 @@
 import unittest
 import inspect
-
 from HashTable import HashTable
 
 
@@ -12,7 +11,6 @@ class HashTableTest(unittest.TestCase):
     def show(self, msg=None):
         print(inspect.stack()[1][3], msg)
         print(self.hash_table.slots)
-
 
     def test_hash_function(self):
         key = 'cat'
@@ -42,26 +40,51 @@ class HashTableTest(unittest.TestCase):
         hash_value2 = self.hash_table.hash(key2)
         l1 = self.hash_table.slots[hash_value1]
         l2 = self.hash_table.slots[hash_value2]
-
         self.show([(l1.find(key1).key, l1.find(key1).value),(l2.find(key2).key, l2.find(key2).value)])
+
+    def test_put_two_same_keys(self):
+        key1 = 'key1'
+        key2 = 'key1'
+        value1 = 'value1'
+        value2 = 'value2'
+        self.hash_table.put(key1, value1)
+        with self.assertRaises(Exception):
+            self.hash_table.put(key2, value2)
 
     def test_put_override(self):
         key = 'cat'
         data = 'pet'
+        new_value = 'new value'
         self.hash_table.put(key, data)
         hash_value = self.hash_table.hash(key)
         l = self.hash_table.slots[hash_value]
         current = l.find(key)
-        current.value = 'not a pet'
-        self.assertEqual('not a pet', current.value)
+        current.value = new_value
+        self.assertEqual(new_value, current.value)
         self.show((current.key, current.value))
+
+    def test_update_existing_key(self):
+        key = 'cat'
+        value = 'pet'
+        new_value = 'new value'
+        hash_value = self.hash_table.hash(key)
+        self.hash_table.put(key, value)
+        self.hash_table.update(key, new_value)
+        self.assertEqual(new_value, self.hash_table.slots[hash_value].find(key).value)
+
+    def test_update_none_existing_key(self):
+        key = 'cat'
+        value = 'pet'
+        new_value = 'new value'
+        self.hash_table.put(key, value)
+        with self.assertRaises(Exception):
+            self.hash_table.update(key+'1', new_value)
 
     def test_remove_existing_key(self):
         key = 'cat'
         data = 'pet'
         self.hash_table.put(key, data)
         self.hash_table.remove(key)
-
         hash_value = self.hash_table.hash(key)
         slot = self.hash_table.slots[hash_value]
         self.assertIsNone(slot.find(key))
@@ -71,7 +94,6 @@ class HashTableTest(unittest.TestCase):
         key = 'cat'
         data = 'pet'
         self.hash_table.put(key, data)
-
         with self.assertRaises(Exception):
             self.hash_table.remove('dog')
 
