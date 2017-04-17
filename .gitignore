@@ -3,3 +3,7 @@
 
 .idea/*.xml
 .idea/*.iml
+
+#Mac metadata
+**.DS_Store/**
+.DS_Store
