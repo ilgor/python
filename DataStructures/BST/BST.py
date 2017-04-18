@@ -1,6 +1,5 @@
 class Node():
-    def __init__(self, data=None, parent=None, left_child=None, right_child=None):
-        self.parent = parent
+    def __init__(self, data=None, left_child=None, right_child=None):
         self.data = data
         self.left_child = left_child
         self.right_child = right_child
@@ -15,7 +14,7 @@ class Node():
             if self.right_child:
                 self.right_child.insert(data)
             else:
-                self.right_child = None(data)
+                self.right_child = Node(data)
 
 
 
@@ -25,7 +24,13 @@ class BST():
         self.size = 0
 
     def insert(self, data):
-        pass
+        if self.root:
+            self.root.insert(data)
+        else:
+            self.root = Node(data)
+        self.size += 1
+
+
 
 
 
