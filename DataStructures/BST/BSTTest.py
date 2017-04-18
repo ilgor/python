@@ -14,4 +14,5 @@ class BSTTest(unittest.TestCase):
 
     def test_insert(self):
         self.assertEqual(len(self.arr), self.bst.size)
+        self.assertEqual(10, self.bst.root.data)
         self.show(self.bst.size)
