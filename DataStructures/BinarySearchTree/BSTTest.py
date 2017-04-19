@@ -22,7 +22,8 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(2, self.bst.size)
         self.assertEqual(10, self.bst.root.data)
         self.assertEqual(5, self.bst.root.left.data)
-        self.show([('size', self.bst.size), ('root value', self.bst.root.data), ('left child', self.bst.root.left.data)])
+        self.show(
+            [('size', self.bst.size), ('root value', self.bst.root.data), ('left child', self.bst.root.left.data)])
 
     def test_insert_right(self):
         self.bst.insert(10)
@@ -30,7 +31,8 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(2, self.bst.size)
         self.assertEqual(10, self.bst.root.data)
         self.assertEqual(19, self.bst.root.right.data)
-        self.show([('size', self.bst.size), ('root value', self.bst.root.data), ('right child', self.bst.root.right.data)])
+        self.show(
+            [('size', self.bst.size), ('root value', self.bst.root.data), ('right child', self.bst.root.right.data)])
 
     def test_search_existing_item(self):
         self.populate()
@@ -76,5 +78,5 @@ class BSTTest(unittest.TestCase):
         self.show(result)
 
     def populate(self):
-        for i in [10,5,19,1,6,17]:
+        for i in [10, 5, 19, 1, 6, 17]:
             self.bst.insert(i)

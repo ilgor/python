@@ -1,8 +1,9 @@
 class Node():
-    def __init__(self, data=None, left=None, right=None):
-        self.left = left
-        self.right = right
+    def __init__(self, parent=None, data=None):
+        self.parent = parent
         self.data = data
+        self.leftChild = None
+        self.rightChild = None
 
 
 class BST():
@@ -16,7 +17,7 @@ class BST():
 
     def insert_helper(self, rootNode, data):
         if rootNode == None:
-             return Node(data)
+            return Node(data)
         if data < rootNode.data:
             rootNode.left = self.insert_helper(rootNode.left, data)
         else:
@@ -36,7 +37,13 @@ class BST():
 
     def remove(self, data):
         node = self.search(data)
-        if node.left == None and node.right == None:
+        if node.left:
+            node.data = node.left.data
+            node.left = None
+        elif node.right:
+            node.data = node.right.data
+            node.right = None
+
 
 
     def pre_order(self):
@@ -46,7 +53,7 @@ class BST():
 
     def pre_order_helper(self, rootNode, arr):
         if rootNode != None:
-            arr.append(rootNode.data)# print(rootNode.data)
+            arr.append(rootNode.data)  # print(rootNode.data)
             self.pre_order_helper(rootNode.left, arr)
             self.pre_order_helper(rootNode.right, arr)
 
