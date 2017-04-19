@@ -7,7 +7,7 @@ from BST import BST
 class BSTTest(unittest.TestCase):
     def setUp(self):
         self.bst = BST()
-        self.arr = [30,20,30,5,6]
+        self.arr = [5,3,6,2,4,7]
         for item in self.arr:
             self.bst.insert(item)
 
@@ -28,12 +28,6 @@ class BSTTest(unittest.TestCase):
                 self.assertIsNone(self.bst.search(item))
                 self.show(str(item) + ' does not exist')
 
-    def test_remove(self):
-        size = self.bst.size
-        self.assertTrue(self.bst.remove(5))
-        self.assertEqual(size-1, self.bst.size)
-
-
     def test_pre_order(self):
         result = self.bst.pre_order()
         self.show(result)
@@ -45,3 +39,8 @@ class BSTTest(unittest.TestCase):
     def test_in_order(self):
         result = self.bst.in_order()
         self.show(result)
+
+    def test_remove(self):
+        size = self.bst.size
+        self.assertTrue(self.bst.remove(5))
+        self.assertEqual(size-1, self.bst.size)

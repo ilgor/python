@@ -19,6 +19,10 @@ class Node():
     def search(self, data):
         if data == self.data:
             return self
+
+        if self is not None:
+            self.parent = self
+
         if data <= self.data:
             if self.left_child:
                 return self.left_child.search(data)
@@ -29,19 +33,6 @@ class Node():
                 return self.right_child.search(data)
             else:
                 return None
-
-    def remove(self, data):
-        node = self.search(data)
-        if node:
-            if node.left_child:
-                node = node.left_child
-            elif node.right_child:
-                node = node.right_child
-            else:
-                node = None
-            return True
-        else:
-            return False
 
     def pre_order(self, rootNode, arr):
         if rootNode != None:
@@ -61,6 +52,22 @@ class Node():
             arr.append(rootNode.data)
             self.in_order(rootNode.right_child, arr)
 
+    def remove(self, data):
+        node = self.search(data)
+        if node is None:
+            return False
+        if node.parent == None:
+            node = None
+        if node:
+            if node.left_child:
+                node.parent.left_child = node.left_child
+            elif node.right_child:
+                node.parent.right_child = node.right_child
+            else:
+                node.parent.left_child = None
+                node.parent.right_child = None
+            return True
+
 class BST():
     def __init__(self):
         self.root = None
@@ -78,10 +85,6 @@ class BST():
             return None
         return self.root.search(data)
 
-    def remove(self, data):
-        if self.root.remove(data):
-            self.size -= 1
-
     def in_order(self):
         arr = []
         self.root.in_order(self.root, arr)
@@ -96,3 +99,7 @@ class BST():
         arr = []
         self.root.post_order(self.root, arr)
         return arr
+
+    def remove(self, data):
+        if self.root.remove(data):
+            self.size -= 1
