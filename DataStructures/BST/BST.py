@@ -43,8 +43,6 @@ class Node():
         else:
             return False
 
-
-
     def pre_order(self, rootNode, arr):
         if rootNode != None:
             arr.append(rootNode.data)
