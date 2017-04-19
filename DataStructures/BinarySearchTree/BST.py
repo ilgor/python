@@ -37,7 +37,6 @@ class BST():
 
     def remove(self, data):
         node = self.search(data)
-<<<<<<< HEAD
         if node.left:
             node.data = node.left.data
             node.left = None
@@ -45,10 +44,8 @@ class BST():
             node.data = node.right.data
             node.right = None
 
-=======
         if node.left == None and node.right == None:
             pass
->>>>>>> 85b2edf63260f369bf8f5a157671e861b1c39e64
 
 
     def pre_order(self):
