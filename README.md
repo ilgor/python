@@ -1,6 +1,4 @@
 # python
 Everything written in Python
 
-<a href="https://landscape.io/github/ilgor/python/master">
-  <img alt="Code Health" src="https://landscape.io/github/ilgor/python/master/landscape.svg?style=plastic"/>
-</a>
+<img src="https://landscape.io/github/ilgor/python/master/landscape.svg?style=plastic"> <img src='https://coveralls.io/repos/github/ilgor/python/badge.svg?branch=master'>
