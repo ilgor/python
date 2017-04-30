@@ -1,9 +1,15 @@
+class Color():
+    BLACK = 1
+    RED = 2
+
+
 class Node():
-    def __init__(self, data=None, parent=None):
+    def __init__(self, data=None, parent=None, color=Color.BLACK):
         self.data = data
         self.parent = parent
-        self.left_child = None
-        self.right_child = None
+        self.left = None
+        self.right = None
+        self.color = color
 
 
 class RBT():
