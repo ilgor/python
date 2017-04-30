@@ -67,17 +67,31 @@ class BST():
             self.in_order_helper(node.right_child, arr)
         return arr
 
+    def transplant(self, u, v):
+        if u.parent is None:
+            self.root = v
+        elif u.parent.left_child == u:
+            u.parent.left_child = v
+        else:
+            u.parent.right_child = v
+        if v is not None:
+            v.parent = u.parent
+
     def remove(self, data):
         current, parent = self.search(data)
         if current is None:
             raise Exception(str(data)+' doesnt exit')
-        if current.left_child is None and current.right_child is None:
-            if parent.left_child and parent.left_child.data == data:
-                parent.left_child = None
-            else:
-                parent.right_child = None
-        elif current.left_child and current.right_child is None:
-            parent.left_child = current.left_child
-            current = None
-
+        if current.left_child is None:
+            self.transplant(current, current.right_child)
+        elif current.right_child is None:
+            self.transplant(current, current.left_child)
+        else:
+            y = self.find_min(current.right_child)
+            if y.parent != current:
+                self.transplant(y, y.right_child)
+                y.right_child = current.right_child
+                y.right_child.parent = y
+            self.transplant(current, y)
+            y.left_child = current.left_child
+            y.left_child.parent = y
         self.size -= 1

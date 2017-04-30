@@ -6,7 +6,7 @@ from BST import BST
 class BSTTest(unittest.TestCase):
     def setUp(self):
         self.bst = BST()
-        self.arr = [3,1,2,0]
+        self.arr = [3,1,2,4,5,0]
         for item in self.arr:
             self.bst.insert(item)
 
@@ -40,10 +40,18 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(self.arr, result)
         self.show(result)
 
+    def test_transplant(self):
+        u = self.bst.root
+        v, parent = self.bst.search(5)
+
+        self.bst.transplant(u, v)
+        self.assertEquals(self.bst.root, v)
+        self.show([self.bst.root.data, v.data])
+
     def test_remove_node_with_no_leaves(self):
         self.bst.remove(0)
         self.arr.sort()
-        self.assertEqual(len(self.arr)-1, self.bst.size)
+        self.assertEqual(len(self.arr) - 1, self.bst.size)
         self.arr.remove(0)
         self.assertEqual(self.arr, self.bst.in_order())
         self.show(self.bst.in_order)
