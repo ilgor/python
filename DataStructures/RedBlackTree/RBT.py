@@ -14,7 +14,7 @@ class Node():
 class RBT():
     def __init__(self):
         self.NIL = Node(None, None, Color.BLACK)
-        self.root = None
+        self.root = self.NIL
         self.size = 0
 
     def left_rotate(self, x):
