@@ -104,3 +104,38 @@ class RBT():
         else:
             u.parent.right = v
         v.parent = u.parent
+
+    def delete(self, node):
+        temp_node = node
+        temp_node_original_color = temp_node.color
+        if node.left == self.NIL:
+            x = node.right
+            self.transplant(node, node.right)
+        elif node.right == self.NIL:
+            x = node.left
+            self.transplant(node, node.left)
+        else:
+            temp_node = self.minimum(node.right)
+            temp_node_original_color = temp_node.color
+            x = temp_node.right
+            if temp_node.parent == node:
+                x.parent = temp_node
+            else:
+                self.transplant(node, temp_node)
+                temp_node.right = node.right
+                temp_node.right.parent = temp_node
+            self.transplant(node, temp_node)
+            temp_node.left = node.left
+            temp_node.left.parent = temp_node
+            temp_node.color = node.color
+        if temp_node_original_color == Color.BLACK:
+            self.delete_fix_up(x)
+
+    def minimum(self, node):
+        current = node
+        while current.left != self.NIL:
+            current = current.left
+        return current
+
+    def delete_fix_up(self, x):
+        pass
