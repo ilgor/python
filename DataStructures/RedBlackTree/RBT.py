@@ -96,3 +96,11 @@ class RBT():
                     self.left_rotate(new_node.parent.parent)
         self.root.color = Color.BLACK
 
+    def transplant(self, u, v):
+        if u.parent == self.NIL:
+            self.root = v
+        elif u == u.parent.left:
+            u.parent.left = v
+        else:
+            u.parent.right = v
+        v.parent = u.parent
