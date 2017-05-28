@@ -32,3 +32,10 @@ class fibonacci_test(unittest.TestCase):
         actual = self.fib.generate_fibonacci_sequence_for(n)
         self.show(expected)
         self.assertEqual(expected, actual)
+
+    def test_big_seq(self):
+        n = 500000
+        actual = self.fib.generate_fibonacci_sequence_for(n)
+        self.show(actual[n-1])
+
+        

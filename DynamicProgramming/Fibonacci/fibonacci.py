@@ -1,5 +1,4 @@
 
-
 class Fibonacci():
     def __init__(self):
         self.dict = {}
